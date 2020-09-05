@@ -11,10 +11,12 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(morgan("tiny"))
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sword-fitness-tracker", {
   useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+
 });
 
 require("./routes/apiRoutes")(app);
